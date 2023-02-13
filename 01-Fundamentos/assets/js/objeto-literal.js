@@ -33,4 +33,21 @@ console.log("Ultimo traje:", personaje.trajes[personaje.trajes.length - 1]);
 const x = 'vivo';
 console.log('Vivo:',personaje[x]);
 
+// Mas detalles
 
+delete personaje.edad;
+
+console.log(personaje);
+
+const entriesPares = Object.entries(personaje);
+console.log(entriesPares);
+
+Object.freeze(personaje);
+
+personaje.dinero = 10000000;
+
+console.log(personaje);
+
+const propiedades = Object.getOwnPropertyNames(personaje);
+const valores = Object.values(personaje);
+console.log({propiedades,valores});
