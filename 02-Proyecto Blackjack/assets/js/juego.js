@@ -29,10 +29,24 @@ const crearDeck = () => {
 
 /* ********** Funcion para pedir una carta ********** */
 const pedirCarta = () => {
+  if (deck.length === 0) {
+    throw "No hay cartas en la baraja";
+  }
 
+  const carta = deck.pop();
 
-    return '2C';
-}
+  console.log(deck);
+  return carta;
+};
 /* ********** Funcion para pedir una carta ********** */
 
+/* ********** Funcion para saber el valor de una carta ********** */
+const valorCarta = (carta) => {
+  const valor = carta.substring(0, carta.length - 1);
+
+  return isNaN(valor) ? (valor === "A" ? 11 : 10) : valor * 1;
+};
+/* ********** Funcion para saber el valor de una carta ********** */
+
 crearDeck();
+pedirCarta();
