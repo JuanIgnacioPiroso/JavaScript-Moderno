@@ -9,6 +9,7 @@ let deck = [];
 const tipos = ["C", "D", "H", "S"];
 const especiales = ["A", "J", "Q", "K"];
 
+/* ********** Funcion para crear mazo mezclado ********** */
 const crearDeck = () => {
   for (let i = 2; i <= 10; i++) {
     for (let tipo of tipos) {
@@ -20,10 +21,18 @@ const crearDeck = () => {
       deck.push(esp + tipo);
     }
   }
-  console.log(deck);
 
   deck = _.shuffle(deck);
   console.log(deck);
 };
+/* ********** Funcion para crear mazo mezclado ********** */
+
+/* ********** Funcion para pedir una carta ********** */
+const pedirCarta = () => {
+
+
+    return '2C';
+}
+/* ********** Funcion para pedir una carta ********** */
 
 crearDeck();
