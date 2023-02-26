@@ -14,7 +14,7 @@ let puntosComputadora = 0;
 
 // Referencias del HTML
 
-const divCartasJugador = document.querySelector('#jugador-cartas')
+const divCartasJugador = document.querySelector("#jugador-cartas");
 const btnPedir = document.querySelector("#btnPedir");
 const puntosHTML = document.querySelectorAll("small");
 /* ********** Funcion para crear mazo mezclado ********** */
@@ -64,11 +64,17 @@ btnPedir.addEventListener("click", () => {
   puntosJugador += valorCarta(carta);
   puntosHTML[0].innerText = puntosJugador;
 
-  const imgCarta = document.createElement('img');
+  const imgCarta = document.createElement("img");
   imgCarta.src = `assets/cartas/${carta}.png`;
-  imgCarta.classList.add('carta');
-  
+  imgCarta.classList.add("carta");
+
   divCartasJugador.append(imgCarta);
 
-  console.log(puntosJugador);
+  if (puntosJugador > 21) {
+    console.warn("Usted ha perdido");
+    btnPedir.disabled = true;
+  } else if (puntosJugador === 21) {
+    console.warn("21, genial!");
+    btnPedir.disabled = true;
+  }
 });
