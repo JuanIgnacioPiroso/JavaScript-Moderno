@@ -9,6 +9,14 @@ let deck = [];
 const tipos = ["C", "D", "H", "S"];
 const especiales = ["A", "J", "Q", "K"];
 
+let puntosJugador = 0;
+let puntosComputadora = 0;
+
+// Referencias del HTML
+
+const btnPedir = document.querySelector("#btnPedir");
+
+const puntosHTML = document.querySelectorAll("small");
 /* ********** Funcion para crear mazo mezclado ********** */
 const crearDeck = () => {
   for (let i = 2; i <= 10; i++) {
@@ -47,4 +55,14 @@ const valorCarta = (carta) => {
 /* ********** Funcion para saber el valor de una carta ********** */
 
 crearDeck();
-pedirCarta();
+console.log(deck);
+// Eventos
+
+btnPedir.addEventListener("click", () => {
+  const carta = pedirCarta();
+
+  puntosJugador += valorCarta(carta);
+  puntosHTML[0].innerText = puntosJugador;
+
+  console.log(puntosJugador);
+});
