@@ -23,7 +23,6 @@ const crearDeck = () => {
   }
 
   deck = _.shuffle(deck);
-  console.log(deck);
 };
 /* ********** Funcion para crear mazo mezclado ********** */
 
@@ -35,7 +34,6 @@ const pedirCarta = () => {
 
   const carta = deck.pop();
 
-  console.log(deck);
   return carta;
 };
 /* ********** Funcion para pedir una carta ********** */
