@@ -14,8 +14,8 @@ let puntosComputadora = 0;
 
 // Referencias del HTML
 
+const divCartasJugador = document.querySelector('#jugador-cartas')
 const btnPedir = document.querySelector("#btnPedir");
-
 const puntosHTML = document.querySelectorAll("small");
 /* ********** Funcion para crear mazo mezclado ********** */
 const crearDeck = () => {
@@ -63,6 +63,12 @@ btnPedir.addEventListener("click", () => {
 
   puntosJugador += valorCarta(carta);
   puntosHTML[0].innerText = puntosJugador;
+
+  const imgCarta = document.createElement('img');
+  imgCarta.src = `assets/cartas/${carta}.png`;
+  imgCarta.classList.add('carta');
+  
+  divCartasJugador.append(imgCarta);
 
   console.log(puntosJugador);
 });
