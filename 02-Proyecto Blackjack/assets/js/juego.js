@@ -15,8 +15,11 @@ let puntosComputadora = 0;
 // Referencias del HTML
 
 const divCartasJugador = document.querySelector("#jugador-cartas");
+const divCartasComputadora = document.querySelector("#computadora-cartas");
 const btnPedir = document.querySelector("#btnPedir");
+const btnMeQuedo = document.querySelector("#btnMeQuedo");
 const puntosHTML = document.querySelectorAll("small");
+
 /* ********** Funcion para crear mazo mezclado ********** */
 const crearDeck = () => {
   for (let i = 2; i <= 10; i++) {
@@ -54,6 +57,27 @@ const valorCarta = (carta) => {
 };
 /* ********** Funcion para saber el valor de una carta ********** */
 
+// Logica computadora
+
+const turnoComputadora = (puntosMinimos) => {
+  do {
+    const carta = pedirCarta();
+
+    puntosComputadora += valorCarta(carta);
+    puntosHTML[1].innerText = puntosComputadora;
+
+    const imgCarta = document.createElement("img");
+    imgCarta.src = `assets/cartas/${carta}.png`;
+    imgCarta.classList.add("carta");
+
+    divCartasComputadora.append(imgCarta);
+
+    if (puntosMinimos > 21) {
+      break;
+    }
+  } while (puntosComputadora < puntosMinimos && puntosMinimos <= 21);
+};
+
 crearDeck();
 console.log(deck);
 // Eventos
@@ -73,8 +97,16 @@ btnPedir.addEventListener("click", () => {
   if (puntosJugador > 21) {
     console.warn("Usted ha perdido");
     btnPedir.disabled = true;
+    turnoComputadora(puntosJugador);
   } else if (puntosJugador === 21) {
     console.warn("21, genial!");
     btnPedir.disabled = true;
+    turnoComputadora(puntosJugador);
   }
+});
+
+btnMeQuedo.addEventListener("click", () => {
+  btnPedir.disabled = true;
+  btnMeQuedo.disabled = true;
+  turnoComputadora(puntosJugador);
 });
