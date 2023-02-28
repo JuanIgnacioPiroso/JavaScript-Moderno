@@ -9,24 +9,35 @@
   "use strict";
 
   let deck = [];
-  const tipos = ["C", "D", "H", "S"];
-  const especiales = ["A", "J", "Q", "K"];
+  const tipos = ["C", "D", "H", "S"],
+    especiales = ["A", "J", "Q", "K"];
 
-  let puntosJugador = 0,
-    puntosComputadora = 0;
+  let puntosJugadores = [];
 
   // Referencias del HTML
-  const btnPedir = document.querySelector("#btnPedir");
-  const btnDetener = document.querySelector("#btnMeQuedo");
-  const btnNuevo = document.querySelector("#btnNuevo");
+  const btnPedir = document.querySelector("#btnPedir"),
+    btnDetener = document.querySelector("#btnMeQuedo"),
+    btnNuevo = document.querySelector("#btnNuevo");
 
-  const divCartasJugador = document.querySelector("#jugador-cartas");
-  const divCartasComputadora = document.querySelector("#computadora-cartas");
+  const divCartasJugador = document.querySelector("#jugador-cartas"),
+    divCartasComputadora = document.querySelector("#computadora-cartas");
 
   const puntosHTML = document.querySelectorAll("small");
 
+  /* ********** Funcion para iniciar juego ********** */
+  const inicializarJuego = (numJugadores = 2) => {
+    deck = crearDeck();
+
+    for (let i = 0; i < numJugadores; i++) {
+      puntosJugadores.push(0);
+    }
+  };
+  /* ********** Funcion para iniciar juego ********** */
+
   /* ********** Funcion para crear mazo mezclado ********** */
   const crearDeck = () => {
+    deck = [];
+
     for (let i = 2; i <= 10; i++) {
       for (let tipo of tipos) {
         deck.push(i + tipo);
@@ -38,21 +49,17 @@
         deck.push(esp + tipo);
       }
     }
-    // console.log( deck );
-    deck = _.shuffle(deck);
-    return deck;
+
+    return _.shuffle(deck);
   };
   /* ********** Funcion para crear mazo mezclado ********** */
-
-  crearDeck();
 
   /* ********** Funcion para pedir una carta ********** */
   const pedirCarta = () => {
     if (deck.length === 0) {
       throw "No hay cartas en el deck";
     }
-    const carta = deck.pop();
-    return carta;
+    return deck.pop();
   };
   /* ********** Funcion para pedir una carta ********** */
 
@@ -62,6 +69,8 @@
     return isNaN(valor) ? (valor === "A" ? 11 : 10) : valor * 1;
   };
   /* ********** Funcion para saber el valor de una carta ********** */
+
+  const acumularPuntos = () => {};
 
   /* ********** Turno de la computadora ********** */
   const turnoComputadora = (puntosMinimos) => {
@@ -137,8 +146,9 @@
   /* ******************** Boton Nuevo Juego ******************** */
   btnNuevo.addEventListener("click", () => {
     console.clear();
-    deck = [];
-    deck = crearDeck();
+    inicializarJuego();
+    //deck = [];
+    //deck = crearDeck();
 
     puntosJugador = 0;
     puntosComputadora = 0;
