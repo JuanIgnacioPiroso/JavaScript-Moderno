@@ -1,4 +1,4 @@
-import "./style.css";
+import "/style.css";
 import _ from 'underscore'
 /**
  * 2C = Two of Clubs
@@ -39,26 +39,6 @@ const miModulo = (() => {
     btnDetener.disabled = false;
   };
   /* ********** Funcion para iniciar juego ********** */
-
-  /* ********** Funcion para crear mazo mezclado ********** */
-  const crearDeck = () => {
-    deck = [];
-
-    for (let i = 2; i <= 10; i++) {
-      for (let tipo of tipos) {
-        deck.push(i + tipo);
-      }
-    }
-
-    for (let tipo of tipos) {
-      for (let esp of especiales) {
-        deck.push(esp + tipo);
-      }
-    }
-
-    return _.shuffle(deck);
-  };
-  /* ********** Funcion para crear mazo mezclado ********** */
 
   /* ********** Funcion para pedir una carta ********** */
   const pedirCarta = () => {
