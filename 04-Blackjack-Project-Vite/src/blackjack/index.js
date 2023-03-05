@@ -2,6 +2,7 @@ import "/style.css";
 import _ from 'underscore';
 import { crearDeck } from "./usecases/crear-deck";
 import { pedirCarta } from "./usecases/pedir-carta";
+import { valorCarta } from "./usecases/valor-carta";
 /**
  * 2C = Two of Clubs
  * 2D = Two of Diamonds
@@ -43,12 +44,7 @@ const miModulo = (() => {
   /* ********** Funcion para iniciar juego ********** */
 
 
-  /* ********** Funcion para saber el valor de una carta ********** */
-  const valorCarta = (carta) => {
-    const valor = carta.substring(0, carta.length - 1);
-    return isNaN(valor) ? (valor === "A" ? 11 : 10) : valor * 1;
-  };
-  /* ********** Funcion para saber el valor de una carta ********** */
+ 
 
   /* ********** Funcion para saber el puntaje de cada jugador ********** */
   const acumularPuntos = (carta, turno) => {
@@ -59,6 +55,14 @@ const miModulo = (() => {
   };
   /* ********** Funcion para saber el puntaje de cada jugador ********** */
 
+  /* ********** Funcion para crear imagenes de las cartas ********** */
+  const crearCarta = (carta, turno) => {
+    const imgCarta = document.createElement("img");
+    imgCarta.src = `assets/cartas/${carta}.png`; //3H, JD
+    imgCarta.classList.add("carta");
+    divCartasJugadores[turno].append(imgCarta);
+  };
+  /* ********** Funcion para crear imagenes de las cartas ********** */
 
   /* ********** Funcion para determinar el ganador ********** */
   const determinarGanador = () => {
