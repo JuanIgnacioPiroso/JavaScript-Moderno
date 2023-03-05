@@ -59,14 +59,6 @@ const miModulo = (() => {
   };
   /* ********** Funcion para saber el puntaje de cada jugador ********** */
 
-  /* ********** Funcion para crear imagenes de las cartas ********** */
-  const crearCarta = (carta, turno) => {
-    const imgCarta = document.createElement("img");
-    imgCarta.src = `assets/cartas/${carta}.png`; //3H, JD
-    imgCarta.classList.add("carta");
-    divCartasJugadores[turno].append(imgCarta);
-  };
-  /* ********** Funcion para crear imagenes de las cartas ********** */
 
   /* ********** Funcion para determinar el ganador ********** */
   const determinarGanador = () => {
