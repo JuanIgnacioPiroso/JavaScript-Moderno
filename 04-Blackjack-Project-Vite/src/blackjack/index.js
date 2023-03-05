@@ -1,6 +1,7 @@
 import "/style.css";
 import _ from 'underscore';
 import { crearDeck } from "./usecases/crear-deck";
+import { pedirCarta } from "./usecases/pedir-carta";
 /**
  * 2C = Two of Clubs
  * 2D = Two of Diamonds
@@ -41,14 +42,6 @@ const miModulo = (() => {
   };
   /* ********** Funcion para iniciar juego ********** */
 
-  /* ********** Funcion para pedir una carta ********** */
-  const pedirCarta = () => {
-    if (deck.length === 0) {
-      throw "No hay cartas en el deck";
-    }
-    return deck.pop();
-  };
-  /* ********** Funcion para pedir una carta ********** */
 
   /* ********** Funcion para saber el valor de una carta ********** */
   const valorCarta = (carta) => {
@@ -98,7 +91,7 @@ const miModulo = (() => {
     let puntosComputadora = 0;
 
     do {
-      const carta = pedirCarta();
+      const carta = pedirCarta(deck);
 
       puntosComputadora = acumularPuntos(carta, puntosJugadores.length - 1);
 
@@ -113,7 +106,7 @@ const miModulo = (() => {
 
   /* ******************** Boton Pedir Carta ******************** */
   btnPedir.addEventListener("click", () => {
-    const carta = pedirCarta();
+    const carta = pedirCarta(deck);
 
     const puntosJugador = acumularPuntos(carta, 0);
 
