@@ -1,5 +1,6 @@
 import "/style.css";
-import _ from 'underscore'
+import _ from 'underscore';
+import { crearDeck } from "./usecases/crear-deck";
 /**
  * 2C = Two of Clubs
  * 2D = Two of Diamonds
@@ -25,7 +26,7 @@ const miModulo = (() => {
 
   /* ********** Funcion para iniciar juego ********** */
   const inicializarJuego = (numJugadores = 2) => {
-    deck = crearDeck();
+    deck = crearDeck(tipos,especiales);
 
     puntosJugadores = [];
     for (let i = 0; i < numJugadores; i++) {
