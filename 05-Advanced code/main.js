@@ -33,4 +33,4 @@ const element = document.querySelector(".card");
 //asyncComponent(element);
 //asyncAwaitComponent(element);
 //asyncAwait2Component(element);
-//forAwaitComponent(element);
+forAwaitComponent(element);
