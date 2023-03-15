@@ -4,6 +4,7 @@ import { enviromentsComponent } from "./src/concepts/01-Enviroments";
 import { callbacksComponent } from "./src/concepts/02-Callbacks";
 import { promiseComponent } from "./src/concepts/03-Promises";
 import { promiseRaceComponent } from "./src/concepts/04-Promise-race";
+import { asyncComponent } from "./src/concepts/05-Async";
 
 document.querySelector("#app").innerHTML = `
   <div>
@@ -25,4 +26,5 @@ const element = document.querySelector(".card");
 //enviromentsComponent(element);
 //callbacksComponent(element);
 //promiseComponent(element);
-promiseRaceComponent(element);
+//promiseRaceComponent(element);
+asyncComponent(element);
